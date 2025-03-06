@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omniverse 遠端操控</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左側選單 -->
+        <div class="sidebar">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="tab1">目前使用時長</button>
+                <button class="tab-button" data-tab="tab2">目前使用次數</button>
+                <button class="tab-button" data-tab="tab3">目前使用狀態</button>
+            </div>
+
+            <div class="tab-content active" id="tab1">
+                <h2>目前使用時長</h2>
+                <p><span id="totalUsageTime">0</span> 分鐘</p>
+
+                <!-- 目前進行中的使用紀錄 -->
+                <h3>正在進行的使用紀錄</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>開始時間</th>
+                            <th>離開時間</th>
+                            <th>使用時長</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="startTime">NAN</td>
+                            <td id="endTime">NAN</td>
+                            <td id="usageDuration">NAN</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 歷史使用紀錄 -->
+                <h3>已完成的使用紀錄</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>開始時間</th>
+                            <th>離開時間</th>
+                            <th>使用時長</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usageHistoryTable">
+                        <!-- 這裡會動態新增紀錄 -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-content" id="tab2">
+                <h2>目前使用次數</h2>
+                <p><span id="usageCount">0</span> 次</p>
+            </div>
+
+            <div class="tab-content" id="tab3">
+                <h2>目前使用狀態</h2>
+                <p><span id="onlineStatus">離線</span></p>
+            </div>
+        </div>
+
+        <!-- 右側遠端操控 -->
+        <div class="content">
+            <iframe id="omniverseFrame" src="http://127.0.1.1:8111/streaming/webrtc-demo/?server=127.0.1.1"></iframe>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
